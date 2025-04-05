@@ -49,49 +49,51 @@ const UserTable: React.FC = () => {
   };
 
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="relative overflow-x-auto">
+  <div className="max-h-[500px] overflow-y-auto">
+    <table className="min-w-full divide-y divide-gray-200">
+      <thead className="bg-gray-50 sticky top-0 z-10">
+        <tr>
+          <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+            Name
+          </th>
+          <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+            City
+          </th>
+          <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+            Birthday
+          </th>
+        </tr>
+      </thead>
+      <tbody className="bg-white divide-y divide-gray-200">
+        {filteredUsers.length === 0 ? (
           <tr>
-            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-              Name
-            </th>
-            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-              City
-            </th>
-            <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
-              Birthday
-            </th>
+            <td colSpan={3} className="px-6 py-4 text-center text-gray-500">
+              No users found matching your criteria
+            </td>
           </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {filteredUsers.length === 0 ? (
-            <tr>
-              <td colSpan={3} className="px-6 py-4 text-center text-gray-500">
-                No users found matching your criteria
+        ) : (
+          filteredUsers.map((user) => (
+            <tr 
+              key={user.id} 
+              className={isOldestInCity(user) ? "bg-orange-100 border-3 border-orange-400 my-2 rounded-lg" : "py-3 my-2"}
+            >
+              <td className="px-6 py-4 whitespace-nowrap">
+                {user.firstName} {user.lastName}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {user.address?.city}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {formatDate(user.birthDate)}
               </td>
             </tr>
-          ) : (
-            filteredUsers.map((user) => (
-              <tr 
-                key={user.id} 
-                className={isOldestInCity(user) ? "bg-orange-100 border-3 border-orange-400 my-2 rounded-lg" : "py-3 my-2"}
-              >
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {user.firstName} {user.lastName}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {user.address.city}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  {formatDate(user.birthDate)}
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-    </div>
+          ))
+        )}
+      </tbody>
+    </table>
+  </div>
+</div>
   );
 };
 
