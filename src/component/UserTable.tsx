@@ -54,13 +54,13 @@ const UserTable: React.FC = () => {
     <table className="min-w-full divide-y divide-gray-200">
       <thead className="bg-gray-50 sticky top-0 z-10">
         <tr>
-          <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          <th className="px-6 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider">
             Name
           </th>
-          <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          <th className="px-6 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider">
             City
           </th>
-          <th className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+          <th className="px-6 py-3 text-center text-sm font-medium text-gray-500 uppercase tracking-wider">
             Birthday
           </th>
         </tr>
