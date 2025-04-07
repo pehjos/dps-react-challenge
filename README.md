@@ -159,7 +159,7 @@ This project follows strict **ESLint** rules with **TypeScript support**, enforc
 We follow a **Git best practice workflow** to ensure clean and manageable code.
 
 ### 🔄 **Branching Strategy**
-- `main` → Stable production-ready branch  
+- `master` → Stable production-ready branch  
 - `develop` → Ongoing development work  
 - `feature/*` → New features (merged into `develop`)  
 - `bugfix/*` → Fixes for reported issues  
@@ -192,11 +192,11 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - main
+      - master
       - develop
   pull_request:
     branches:
-      - main
+      - master
       - develop
 
 jobs:
